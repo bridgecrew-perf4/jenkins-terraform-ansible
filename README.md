@@ -33,3 +33,4 @@ cat /var/lib/jenkins/secrets/initialAdminPassword
 
 - Set additional permissions for docker agents:
 chmod 777 /var/run/docker.sock
+
