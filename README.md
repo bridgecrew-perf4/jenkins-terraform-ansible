@@ -1,11 +1,11 @@
 # jenkins-terraform-ansible
 Pipeline flow:
 Agent: Launch Jenkins agent in Docker container with Terraform and Ansible (base image: mas0lik/terraform-jenkins-agent);
-Stage 1: Clone Terraform manifest and Ansible Playbook form GitHub;
+- Stage 1: Clone Terraform manifest and Ansible Playbook form GitHub;
 Base repo with Terraform manifest and Ansible Playbook: https://github.com/mas0lik/terraform-docker-v2
-Stage 2: Copy GCP authentication json form Jenkins secrets to working directory;
-Stage 3: Encrypt Dockerhub password with Ansible Vault;
-Stage 4: Execute Terraform Init, Plan and Apply.
+- Stage 2: Copy GCP authentication json form Jenkins secrets to working directory;
+- Stage 3: Encrypt Dockerhub password with Ansible Vault;
+- Stage 4: Execute Terraform Init, Plan and Apply.
 
 Terraform and Ansible flow:
 Terraform deploys two VM instances (Staging and Production) at Google Cloud (GCP), forms custom inventory for Ansible
