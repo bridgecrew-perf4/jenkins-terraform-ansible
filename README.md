@@ -1,19 +1,19 @@
 # jenkins-terraform-ansible
-//Pipeline flow:
-//Agent: Launch Jenkins agent in Docker container with Terraform and Ansible (base image: mas0lik/terraform-jenkins-agent);
-//Stage 1: Clone Terraform manifest and Ansible Playbook form GitHub;
-//Base repo with Terraform manifest and Ansible Playbook: https://github.com/mas0lik/terraform-docker-v2
-//Stage 2: Copy GCP authentication json form Jenkins secrets to working directory;
-//Stage 3: Encrypt Dockerhub password with Ansible Vault;
-//Stage 4: Execute Terraform Init, Plan and Apply.
+Pipeline flow:
+Agent: Launch Jenkins agent in Docker container with Terraform and Ansible (base image: mas0lik/terraform-jenkins-agent);
+Stage 1: Clone Terraform manifest and Ansible Playbook form GitHub;
+Base repo with Terraform manifest and Ansible Playbook: https://github.com/mas0lik/terraform-docker-v2
+Stage 2: Copy GCP authentication json form Jenkins secrets to working directory;
+Stage 3: Encrypt Dockerhub password with Ansible Vault;
+Stage 4: Execute Terraform Init, Plan and Apply.
 
-//Terraform and Ansible flow:
-// Terraform deploys two VM instances (Staging and Production) at Google Cloud (GCP), forms custom inventory for Ansible
-// and then invokes Ansible playbook with roles.
-// Ansible playbook sets Staging and Production VM configurations according to designated roles:
-// STAGING environment: VM 'terraform-staging' is used to build web application "Boxfuse" inside Docker container
-// and push docker image with artifact to Dockerhub
-// PRODUCTION environment: VM 'terraform-production' is used to pull Docker image with artifact and start docker container
+Terraform and Ansible flow:
+Terraform deploys two VM instances (Staging and Production) at Google Cloud (GCP), forms custom inventory for Ansible
+and then invokes Ansible playbook with roles.
+Ansible playbook sets Staging and Production VM configurations according to designated roles:
+STAGING environment: VM 'terraform-staging' is used to build web application "Boxfuse" inside Docker container
+and push docker image with artifact to Dockerhub
+PRODUCTION environment: VM 'terraform-production' is used to pull Docker image with artifact and start docker container
 
 How to prepare your environment:
 - Get VM Ubuntu 20.04 LTS
